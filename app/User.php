@@ -43,4 +43,8 @@ class User extends Authenticatable
     public function hasRole($Role){
         return null !== $this->role()->where('name',$Role)->first();
     }
+
+    public function profile(){
+        return $this->hasOne('App\Profile','user_id');
+    }
 }
