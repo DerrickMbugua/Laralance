@@ -8,11 +8,12 @@ use \Auth;
 
 class ProfileController extends Controller
 {
-    //
+    //to show the profile view
     public function create(){
-        return view('freelancer.profile');
+        $show=Profile::where('user_id',Auth::user()->id)->get();
+        return view('freelancer.profile')->with('show',$show);
     }
-
+//to save the profile
     public function overview(Request $req){
        
         $User = Auth::user();
@@ -33,5 +34,9 @@ class ProfileController extends Controller
 
         return redirect('/profile');
     }
-
+//to show profile on the profile page
+public function show(){
+   // $show=Profile::where('user_id',Auth::user()->id)->get();
+   // return $show;
+}
 }

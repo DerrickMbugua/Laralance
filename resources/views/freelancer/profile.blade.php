@@ -48,6 +48,9 @@
 
    <section class="content">
     <div class="container-fluid">
+      @foreach ($show as $item)
+          
+     
       <div class="row">
         <div class="col-md-3">
 
@@ -62,7 +65,7 @@
 
               <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
 
-              <p class="text-muted text-center">Software Engineer</p>
+              <p class="text-muted text-center">{{$item->professional_title}}</p>
 
               <form class="">
 <input type="file" name="img">
@@ -86,32 +89,29 @@
               <strong><i class="fas fa-book mr-1"></i> Education</strong>
 
               <p class="text-muted">
-                B.S. in Computer Science from the University of Tennessee at Knoxville
+                {{$item->education}}
               </p>
 
               <hr>
 
               <strong><i class="fas fa-map-marker-alt mr-1"></i> Hourly rate</strong>
 
-              <p class="text-muted">$135</p>
+              <p class="text-muted">${{$item->hourly_rate}}/hour</p>
 
               <hr>
 
               <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
 
               <p class="text-muted">
-                <span class="tag tag-danger">UI Design</span>
-                <span class="tag tag-success">Coding</span>
-                <span class="tag tag-info">Javascript</span>
-                <span class="tag tag-warning">PHP</span>
-                <span class="tag tag-primary">Node.js</span>
+                <span class="tag tag-danger">{{$item->skills}}</span>
+              
               </p>
 
               <hr>
 
               <strong><i class="far fa-file-alt mr-1"></i> Overview</strong>
 
-              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+              <p class="text-muted">{{$item->overview}}</p>
             </div>
             <!-- /.card-body -->
           </div>
@@ -257,6 +257,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+      @endforeach
     </div><!-- /.container-fluid -->
   </section>
 @endsection
