@@ -36,6 +36,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    //role relationship
     public function role(){
         return $this->belongsTo("App\Role");
     }
@@ -43,8 +44,13 @@ class User extends Authenticatable
     public function hasRole($Role){
         return null !== $this->role()->where('name',$Role)->first();
     }
-
+//profile
     public function profile(){
         return $this->hasOne('App\Profile','user_id');
+    }
+
+    //Job relationship
+    public function jobs(){
+        return $this->hasMany('App\Job','user_id');
     }
 }

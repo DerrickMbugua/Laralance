@@ -20,5 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//freelancer profile
 Route::get('profile','ProfileController@create');
 Route::post('overview','ProfileController@overview');
+//jobs
+Route::get('postjob','JobController@create');
+Route::post('postjob','JobController@store');
+Route::get('jobs','JobController@list');
